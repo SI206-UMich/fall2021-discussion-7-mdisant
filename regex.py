@@ -41,17 +41,18 @@ def find_days(string_list):
     """ Return a list of days from the list of strings the dates format in the text are MM/DD/YYYY. """  
 
     # initialize an empty list
-
+    date_list = []
     # define the regular expression
-
+    exp = "\d\/(\d+)\/\d"
     # loop through each line of the string list
-    
+    for line in string_list:
     # find all the dates that match the regular expression in each line
-    
+        found_dates = re.findall(exp, line)
     # loop through the found dates and only add the days to your empty list 
-    
+        for word in found_dates:
+            date_list.append(word)
     #return the list of days
-    pass
+    return date_list
 
 def find_domains(string_list):
     """ Return a list of web address domains from the list of strings the domains of a wbsite are after www. """
