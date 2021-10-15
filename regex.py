@@ -58,22 +58,26 @@ def find_domains(string_list):
     """ Return a list of web address domains from the list of strings the domains of a wbsite are after www. """
 
     # initialize an empty list
-
+    domain_list = []
     # define the regular expression
-
+    exp = "http.+\/\/(.+)"
     # loop through each line of the string list
-
+    for line in string_list:
     # find all the domains that match the regular expression in each line
-
+        found_domains = re.findall(exp, line)
     # loop through the found domains
-
+        for word in found_domains:
     # get the domain name by splitting the (//) after the https or http to get the website name
     # then strip the www. to get only the domain name
-
+            no_slash_word = word[:-1]
+            if "www." in no_slash_word:
+                stripped = no_slash_word[4:]
+            else:
+                stripped = no_slash_word
     # add the domains to your empty list
-    
+            domain_list.append(stripped)
     #return the list of domains
-    pass
+    return domain_list
 
 class TestAllMethods(unittest.TestCase):
 
